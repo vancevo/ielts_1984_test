@@ -1,50 +1,60 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 #drag-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .drag-item {
-  cursor: grab;
-  padding: 8px;
-  border-radius: 4px;
-  background-color: #e0e0e0;
-  font-size: 16px;
-  text-align: center;
-  min-width: 50px;
-  position: relative;
+    cursor: grab;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    min-width: 50px;
+    position: relative;
 }
 
 .drag-item.red {
-  color: red;
+    color: red;
 }
 
 .input-blank {
-  border-bottom: 2px dashed #333;
-  min-width: 50px;
-  padding: 2px 6px;
-  text-align: center;
-  display: inline-block;
+    border-bottom: 2px dashed #333;
+    min-width: 50px;
+    padding: 2px 6px;
+    text-align: center;
+    display: inline-block;
 }
 
 .locked {
-  background-color: #d4f1c5;
-  pointer-events: none;
-}
-
-#feedback {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #333;
+    background-color: #d4f1c5;
+    pointer-events: none;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bg-red {
+    background-color: red;
+    color: white;
+}
+.bg-green {
+  background-color: green;
+  color: white;
+}
+.bg-yellow {
+  background-color: yellow;
+  color: rgb(24, 23, 23);
+}
+.bg-blue {
+  background-color: blue;
+  color: white;
 }

@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-function Blank({ id, word, onDrop }) {
+function Blank({ word, onDrop }) {
     return (
         <motion.span
             className={`input-blank ${word ? 'locked' : ''}`}
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => {
                 e.preventDefault();
-                const droppedWord = e.dataTransfer.getData('text/plain');
+                const droppedWord = e.dataTransfer.getData('drag-word');
                 onDrop(droppedWord);
             }}
         >

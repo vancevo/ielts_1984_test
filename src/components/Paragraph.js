@@ -1,24 +1,39 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { DEFAULT_INPUT_TEXT } from '../const/data';
 import Blank from './Blank';
 
-function Paragraph({ blanks, onDrop }) {
+function Paragraph({ question, blanks, onDrop }) {
+    const fmContent = question.split(DEFAULT_INPUT_TEXT).filter((item) => !!item);
+
     const [filledBlanks, setFilledBlanks] = useState({});
 
     const handleDrop = (blankId, word) => {
-        if (blanks[blankId - 1].correctAnswer === word) {
+        if (blanks[blankId].correctAnswer === word) {
             setFilledBlanks((prev) => ({ ...prev, [blankId]: word }));
-            onDrop(blankId, true);
+            onDrop(blanks[blankId], true);
         } else {
-            onDrop(blankId, false);
+            onDrop(blanks[blankId], false);
         }
     };
 
     return (
-        <div>
-            <p>
-                The sky is <Blank id={1} word={filledBlanks[1]} onDrop={(word) => handleDrop(1, word)} /> and the grass
-                is <Blank id={2} word={filledBlanks[2]} onDrop={(word) => handleDrop(2, word)} />.
-            </p>
+        <div className="flex">
+            {fmContent.map((item, index) => (
+                <div
+                    key={index}
+                    className="flex"
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => e.preventDefault()}
+                >
+                    <p>{item}</p>
+                    <Blank
+                        id={index}
+                        word={filledBlanks[index]}
+                        blank={blanks}
+                        onDrop={(word) => handleDrop(index, word)}
+                    />
+                </div>
+            ))}
         </div>
     );
 }

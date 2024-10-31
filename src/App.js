@@ -5,7 +5,7 @@ import './App.css';
 import DragWord from './components/DragWord';
 import Paragraph from './components/Paragraph';
 import Navbar from './components/Navbar';
-import { data, DEFAULT_INPUT_TEXT, DELAY_ERROR, EXTRA_POINT } from './const/data';
+import { data, DEFAULT_INPUT_TEXT, DELAY_ERROR, EXTRA_POINT, SUBMIT_TEXT } from './const/data';
 
 function App() {
     const dragRef = useRef(null);
@@ -37,16 +37,21 @@ function App() {
         }
     };
 
-    const handleSubmit = useCallback(() => {
+    const handleSubmit = useCallback((e) => {
         if (feedback) {
             return;
         }
-        controls.start({
-            color: '#0000FF',
-            transition: { duration: 1 }
-        });
-        setPoint(point + EXTRA_POINT);
-        setFeedback("Congratulations! Now, let's move on to the next question!");
+        const btnName = e.target.innerText;
+        if (btnName === SUBMIT_TEXT) {
+            controls.start({
+                color: '#0000FF',
+                transition: { duration: 1 }
+            });
+            setPoint(point + EXTRA_POINT);
+            setFeedback("Congratulations! Now, let's move on to the next question!");
+            return;
+        }
+        window.location.reload();
     }, []);
 
     const isDisable = () => {

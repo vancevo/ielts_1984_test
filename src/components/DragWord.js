@@ -3,9 +3,17 @@ import { forwardRef } from 'react';
 
 function DragWord({ word, color }, ref) {
     const handleTouchStart = (e) => {
+        e.preventDefault();
         e.target.style.zIndex = 99;
         e.dataTransfer = e.dataTransfer || {};
         e.dataTransfer.setData('drag-word', word);
+
+        const dragEvent = new DragEvent('dragstart', {
+            bubbles: true,
+            cancelable: true,
+            dataTransfer: e.dataTransfer
+        });
+        e.target.dispatchEvent(dragEvent);
     };
 
     const handleTouchEnd = (e) => {

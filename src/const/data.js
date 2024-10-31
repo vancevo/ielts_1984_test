@@ -20,3 +20,4 @@ export const DISTANCE_Y = 20;
 export const DEFAULT_POSITION = { x: 0, y: 0 };
 export const DELAY_ERROR = 1500;
 export const EXTRA_POINT = 100;
+export const SUBMIT_TEXT = "Submit";

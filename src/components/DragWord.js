@@ -22,7 +22,7 @@ function DragWord({ word, color }, ref) {
     return (
         <motion.div
             ref={ref}
-            className={`drag-item bg-${color}`}
+            className={`drag-item bg-${color} select-none`}
             draggable
             onDragStart={(e) => {
                 e.target.style.zIndex = 99;
